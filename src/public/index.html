@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ecommerce</title>
-</head>
-<body>
+  </head>
 
+  <body>
     <h1>Product form</h1>
     <form action="/products" method="post">
-        <label for="nameProducts">Product name: </label>
-        <input type="text" id="nameProducts" name="name">
+      <label for="nameProducts">Product name: </label>
+      <input type="text" id="nameProducts" name="name" />
 
-        <label for="description">Product description: </label>
-        <input type="text" id="description" name="description">
-        
-        <button type="submit">Get products</button>
-        
+      <label for="description">Description: </label>
+      <input type="text" id="description" name="description" />
+
+      <label for="code">Code: </label>
+      <input type="text" id="code" name="code" />
+
+      <label for="price">Price of the product: </label>
+      <input type="text" id="price" name="price" />
+
+      <label for="stock">Stock: </label>
+      <input type="text" id="stock" name="stock" />
+
+      <label for="category">Category</label>
+      <input type="text" id="category" name="category" />
+
+      <label for="thumbnails">thumbnails</label>
+      <input type="text" id="thumbnails" name="thumbnails" />
+
+      <button type="submit">Get products</button>
     </form>
-</body>
+  </body>
 </html>
 
-
-
-    <!-- 
-            <label for="code">Code: </label>
-            <input type="number" id="code" name="code">
-    
-            <label for="price">Price of the product: </label>
-            <input type="text" id="price" name="price">
-    
-            <label for="status">Status: </label>
-            <input type="text" id="status" name="status"> -->
-            
-            <!-- <label for="stock">Stock: </label>
-            <input type="text" id="stock" name="stock">
-    
-            <label for="category">Category</label>
-            <input type="text" id="category" name="category">
-    
-            <label for="thumbnails">thumbnails</label>
-            <input type="text" id="thumbnails" name="thumbnails"> -->
-
-    <!-- <h1>Formulario para usuarios</h1>
+<!-- <h1>Formulario para usuarios</h1>
     <form action="/users" method="post">
         <label for=""></label>
         <input type="text">

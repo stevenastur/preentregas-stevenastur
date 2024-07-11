@@ -2,6 +2,7 @@ import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
 import productsRouter from "./api/products/products.router.js"
+import cartsrouter from "./api/cart/carts.router.js"
 
 const app = express()
 const PORT = 8080
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use("/", productsRouter)
+app.use("/", cartsrouter)
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"))
