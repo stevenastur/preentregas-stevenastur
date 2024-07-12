@@ -1,69 +1,72 @@
 import express from "express";
-import productsRouter from "../products/products.router.js"
-const router = express.Router()
+import { payloadCarts, saveCarts } from "../../utils/carts.utils.js";
+const router = express.Router();
 
-const carts = []
-const products = []
-let cid = 0;
+payloadCarts();
+
+const carts = payloadCarts();
 
 router.get("/carts", (req, res) => {
-    res.json(carts)
-})
+  res.json(carts);
+});
 
 router.get("/carts/:cid", (req, res) => {
-    let idCarts = parseInt(req.params.cid);
+  let idCarts = parseInt(req.params.cid);
 
-    let cart = carts.find((a) => a.cid === idCarts);
+  let cart = carts.find((a) => a.cid === idCarts);
 
-    if (!cart) return res.send({ error: "the cart was not found!" });
+  if (!cart) return res.send({ error: "the cart was not found!" });
 
-    res.json(cart)
-})
+  res.json(cart);
+});
 
 router.post("/carts", (req, res) => {
-      const newCart = {
-        cid: ++cid,
-        products: [],
-      };
+  const { products } = req.body;
+  let idCarts = 0;
 
-    carts.push(newCart)
-    res.json({message: "Registered carts!"})
-})
+  if (carts.length > 0) {
+    idCarts = carts.reduce((max, cart) => cart.id > max ? cart.id : max, 0);
+  }
+  const newCart = {
+    id: idCarts + 1,
+    products: products || [],
+  };
+  carts.push(newCart);
+  saveCarts(carts);
+  res.json({ message: "Registered carts!" });
+});
 
 router.post("/carts/:cid/product/:pid", (req, res) => {
-    let idCart = parseInt(req.params.cid);
-    let idProduct = parseInt(req.params.pid);
-    const {quantity} = req.body
+  let idCart = parseInt(req.params.cid);
+  let idProduct = parseInt(req.params.pid);
+  const { quantity } = req.body;
 
+  const cart = carts.find((a) => a.id === idCart);
+  if (!cart) return res.send({ error: "the cart was not found!" });
 
-    if (!productsRouter.products || productsRouter.products.length === 0) {
-        return res.status(404).json({ error: "Products not found!!!!!!!!!!!!!" });
-      }
-    
-    let product = productsRouter.products.find((a) => a.pid === idProduct);
-    if (!product) return res.send({ error: "the product was not found!" });
+  console.log(cart.products)
 
-    let cart = carts.find((a) => a.cid === idCart);
-    if (!cart) return res.send({ error: "the cart was not found!" });
+  const product = cart.products.find((a) => a.id === idProduct);
+  console.log(cart.products)
+  if (!product) return res.send({ error: "the product was not found!" });
+  
+  product.quantity += quantity;
 
+  saveCarts(carts);
+  res.json({ message: "Product added to cart!" });
+});
 
-    let existingProduct = cart.product.find((a) => a.id === idProduct)
+router.delete('/:cid/product/:pid', (req, res) => {
+  const idCart = parseInt(req.params.cid);
+  const idProduct = parseInt(req.params.pid);
+  const cart = carts.find(cart => cart.id === idCart);
+  if (!cart) {
+      return res.status(404).json({ error: "the cart was not found!" });
+  }
+  cart.products = cart.products.filter(a => a.id !== idProduct);
 
-    if(existingProduct){
-        existingProduct.quantity += parseInt(quantity) || 1
-    }else {
-        cart.product.push({
-            id: idProduct,
-            quantity: parseInt(quantity) || 1
-        })
-    }
-    // const newProduct = {
-    //   id:id
-    // };
-
-//   products.push(newProduct)
-  res.json({message: "Product added to cart!"})
-})
-
+  res.json({ msg: "the cart was deleted!"});
+  saveCarts(carts);
+});
 
 export default router;

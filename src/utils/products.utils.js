@@ -1,9 +1,12 @@
-const fs = require('fs');
-const path = require('path');
+import fs from "fs"
+import path from "path"
+import { fileURLToPath } from "url"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const productsFilePath = path.join(__dirname, '../../products.json');
 
-// Inicializar el archivo de carritos
 const payloadProducts = () => {
     if (!fs.existsSync(productsFilePath)) {
         fs.writeFileSync(productsFilePath, JSON.stringify([]));
@@ -16,8 +19,4 @@ const saveProducts = (products) => {
     const data = JSON.stringify(products, null, 2);
     fs.writeFileSync(productsFilePath, data);
 };
-
-module.exports = {
-    payloadProducts,
-    saveProducts
-};
+export { payloadProducts, saveProducts }

@@ -1,19 +1,19 @@
 import express from "express";
 const router = express.Router();
+import { payloadProducts, saveProducts } from "../../utils/products.utils.js"
 
-const products = [];
-let pid = 0;
+payloadProducts();
+const products = payloadProducts();
 
 router.get("/products", (req, res) => {
   let limit = parseInt(req.query.limit);
-
-  let limitedAlumnos = [...products];
+  let limitedProducts = [...products];
 
   if (!isNaN(limit) && limit > 0) {
-    limitedAlumnos = limitedAlumnos.slice(0, limit);
+    limitedProducts = limitedProducts.slice(0, limit);
   }
 
-  res.json(limitedAlumnos);
+  res.json(limitedProducts);
 });
 
 router.get("/products/:pid", (req, res) => {
@@ -28,19 +28,18 @@ router.get("/products/:pid", (req, res) => {
 
 router.post("/products", (req, res) => {
   const data = req.body;
-
   const newProducts = Array.isArray(data) ? data : [data];
-
+  
   newProducts.forEach((item) => {
-    const { title, description, code, price, stock, category, thumbnails } =
-      item;
+    const { title, description, code, price, stock, category, thumbnails } =  item;
+    let idProduct = products.reduce((max, product) => product.id > max ? product.id : max, 0 )
 
     if (!title || !description || !code || !price || !stock || !category) {
       return res.status(400).json({ error: "All fields except thumbnails are required." });
     }
 
     const newProduct = {
-      pid: ++pid,
+      id: idProduct + 1,
       title: String(title),
       description: String(description),
       code: String(code),
@@ -52,6 +51,7 @@ router.post("/products", (req, res) => {
     };
 
     products.push(newProduct);
+    saveProducts(products);
   });
 
   res.json({ message: "Registered products!" });
@@ -74,22 +74,20 @@ router.put("/products/:pid", (req, res) => {
   product.stock = stock || product.stock;
   product.category = category || product.category;
   product.thumbnails = thumbnails || product.thumbnails;
-
-  res.json({ message: "updated product!" });
+  
+  saveProducts(products);
+  res.json({ product });
 });
 
 router.delete("/products/:pid", (req, res) => {
   const idProduct = parseInt(req.params.pid);
-
   let product = products.findIndex((a) => a.pid === idProduct);
 
   if (!product || product === -1)
     return res.send({ error: "the student was not found!" });
 
   products.splice(product, 1);
-
-  console.log(products);
-
+  saveProducts(products);
   res.json({ message: "Product deleted!" });
 });
 
