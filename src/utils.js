@@ -1,11 +1,15 @@
 import fs from "fs"
 import path from "path"
-import { fileURLToPath } from "url"
 
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
-const productsFilePath = path.join(__dirname, '../../products.json');
+export default __dirname;
+
+const productsFilePath = path.join(__dirname, './products.json');
 
 const payloadProducts = () => {
     if (!fs.existsSync(productsFilePath)) {

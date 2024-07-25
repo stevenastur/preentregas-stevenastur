@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  #cajaChat {
+    background-color: #fff;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  #chat {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    margin: -20px -20px -20px -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  #chatBox {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  #productLogs {
+    padding: 20px;
+    height: auto;
+    overflow-y: auto;
+    border: 1px solid #cbc8c8;
+    text-align: left;
+    background-color: #fafafa;
+    border-radius: 5px;
+  }
+  
+  .product {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e9e9eb;
+  }
+  
+  .product.sender {
+    background-color: #007bff;
+    color: #fff;
+    text-align: right;
+  }
+  
