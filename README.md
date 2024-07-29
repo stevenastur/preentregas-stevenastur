@@ -16,29 +16,19 @@ localhost:8080
 
 . POSTMAN:
 Post/products
-![image](https://github.com/user-attachments/assets/fd9127a1-aabe-47ce-bbbf-71c73e9c3cc8)
+![image](https://github.com/user-attachments/assets/bad3f52d-d47a-46be-9bdb-d71e37e2726e)
 
 Get/products
-![image](https://github.com/user-attachments/assets/42cbddfc-030d-45d3-b2a9-347401b0c1be)
+![image](https://github.com/user-attachments/assets/84bfc885-4994-48b9-a7cd-ddeaf58e6d21)
 
-Post/carts
-![image](https://github.com/user-attachments/assets/073e28e4-7ce2-4eba-9538-6295c6bab8c3)
+http://localhost:8080/
+![image](https://github.com/user-attachments/assets/5ceecaaa-c59b-4327-bcd2-1804a3df1f2a)
 
-Get/carts
-![image](https://github.com/user-attachments/assets/4c7dc3b6-1202-436e-926a-639498dec14c)
+http://localhost:8080/realtimeproducts
+![image](https://github.com/user-attachments/assets/0d08e5c4-1371-44f5-842c-3e1ef09f6c67)
 
-Post/carts/2/product/2
-![image](https://github.com/user-attachments/assets/2f8a5975-ec21-4d0a-83ef-1640d53662ec)
-
-Get/carts/2/product/2
-![image](https://github.com/user-attachments/assets/3149a815-9971-4337-bbd5-a9a52ce2703b)
-
-. JSON:
-Carts
-![image](https://github.com/user-attachments/assets/48c1363b-1595-4fec-8090-c4726b633145)
-
-Products
-![image](https://github.com/user-attachments/assets/8c96a897-f504-45b7-87a8-2169dc297a72)
+products.json:
+![image](https://github.com/user-attachments/assets/5167b431-5f42-4fa9-968b-fd0fb84956c3)
 
 
 
