@@ -1,0 +1,39 @@
+[
+  {
+    "title": "teclado",
+    "description": "teclado",
+    "code": "teclado231312",
+    "price": 2000,
+    "status": false,
+    "stock": 200,
+    "category": "tecladoteclado",
+    "thumbnails": [
+      "tecladowahdsjkahda"
+    ],
+    "id": 1
+  },
+  {
+    "title": "teclado12",
+    "description": "teclado12",
+    "code": "teclado12321321",
+    "price": 300,
+    "status": false,
+    "stock": 3000,
+    "category": "teclado",
+    "thumbnails": [
+      "teclado12teclado12"
+    ],
+    "id": 2
+  },
+  {
+    "id": 3,
+    "title": "mouse",
+    "description": "mouse",
+    "code": "mouse",
+    "price": 2000,
+    "status": true,
+    "stock": 200,
+    "category": "mouse",
+    "thumbnails": []
+  }
+]
