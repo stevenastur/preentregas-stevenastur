@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/5ff54003-942d-4277-99dc-a9b8c7bcd04d)Proyecto Final: Steven Astur
 Aqui iré subiendo los progresos sobre mi cursada de backend I, II y III.
 
 Tecnología utilizada:
